@@ -50,5 +50,27 @@ describe 'As a user' do
         expect(page).to have_content(20)
       end
     end
+
+    it 'I see a form for an actors name' do
+      within '#add-actor-form' do
+        expect(page).to have_field('actor_name')
+      end
+    end
+
+    describe "when I fill in the form with an existing actor's name" do
+      it "I am redirected back to that movie's show page" do
+        @actor_4 = Actor.create!({name: 'Actor 4', age: 5})
+
+        fill_in 'actor_name', with: @actor_4.name
+
+        click_on 'Save Actor'
+
+        expect(current_path).to eq("/movies/#{@busters.id}")
+      end
+    end
   end
 end
+
+# I am redirected back to that movie's show page
+# And I see the actor's name listed
+# (You do not have to test for a sad path, for example if the id is not an existing actor)

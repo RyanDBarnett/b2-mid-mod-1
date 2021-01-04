@@ -19,3 +19,9 @@
     Average Actor Age: <%= @movie.actors.average_age %>
   </li>
 </ul>
+
+<%= form_for :actor, url: '/movie_actors', html: {id: 'add-actor-form'} do |f| %>
+  Actor Name: <%= f.text_field :name %><br />
+  <%= f.hidden_field :movie_id, :value => @movie.id %>
+  <%= f.submit %>
+<% end %>
