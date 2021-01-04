@@ -6,4 +6,13 @@
   <li>Title: <%= @movie.title %></li>
   <li>Creation Year: <%= @movie.creation_year %></li>
   <li>Genre: <%= @movie.genre %></li>
+  <li>Actors:
+    <ul id="movie-<%= @movie.id %>-actors">
+      <% @movie.actors.each do |actor| %>
+        <li id="movie-<%= @movie.id %>-actor-<%= actor.id %>">
+          <%= actor.name %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
 </ul>
