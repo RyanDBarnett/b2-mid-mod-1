@@ -8,11 +8,14 @@
   <li>Genre: <%= @movie.genre %></li>
   <li>Actors:
     <ul id="movie-<%= @movie.id %>-actors">
-      <% @movie.actors.each do |actor| %>
+      <% @movie.actors.sort_by_age.each do |actor| %>
         <li id="movie-<%= @movie.id %>-actor-<%= actor.id %>">
           <%= actor.name %>
         </li>
       <% end %>
     </ul>
+  </li>
+  <li id="movie-<%= @movie.id %>-actor-average-age">
+    Average Actor Age: <%= @movie.actors.average_age %>
   </li>
 </ul>

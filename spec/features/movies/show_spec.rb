@@ -46,7 +46,7 @@ describe 'As a user' do
     end
 
     it "I see the average age of all of the movie's actors" do
-      within "#movie-#{@busters.id}-actors-average-age" do
+      within "#movie-#{@busters.id}-actor-average-age" do
         expect(page).to have_content(20)
       end
     end
